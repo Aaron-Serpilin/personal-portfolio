@@ -20,4 +20,6 @@ npm run build
 firebase deploy
 ```
 
+Frontend uses Vue.js, Firebase, and GSAP for the animations
+
 ## Architecture
