@@ -23,10 +23,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Header from "@/components/molecules/TheHeader.vue";
-import TheFooter from "@/components/molecules/TheFooter.vue";
-import SocialSidebar from "@/components/molecules/SocialSidebar.vue";
-import { pageEnter, pageLeave, prefersReducedMotion } from "@/animations/gsap";
+import Header from "./components/molecules/Header.vue";
+import TheFooter from "./components/molecules/TheFooter.vue";
+import SocialSidebar from "./components/molecules/SocialSidebar.vue";
+import { pageEnter, pageLeave, prefersReducedMotion } from "./animations/gsap";
 
 const isMenuOpen = ref(false);
 

@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 
 // Lazyloading
-const HomeView = () => import("@/pages/HomeView.vue");
-const ProjectsView = () => import("@/pages/ProjectsView.vue");
-const StoryView = () => import("@/pages/StoryView.vue");
+const HomeView = () => import("../components/pages/HomeView.vue");
+const ProjectsView = () => import("../components/pages/ProjectsView.vue");
+const StoryView = () => import("../components/pages/StoryView.vue");
 
 const routes: RouteRecordRaw[] = [
   {
