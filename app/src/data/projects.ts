@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "A niche RAG chatbot and library platform built for a research group in the Netherlands focusing on environmentally sustainable developments in the food transition domain. The database was built by scraping the internet leveraging Google's GSE API. Processing was done through a Gemini-based AI agent, extracting meaning from all possible semantics, not only text. Search and processing was done through Pub/Sub calls.",
     tech: ['Python', 'FastAPI', 'Docker', 'RAG', 'PSQL', 'Cloud Build', 'Cloud Run', 'Firebase', 'Firestore', 'Artifact Registry', 'Pub/Sub', 'Web Scraping', 'Vue.js'],
     image: '/images/projects/food-transition.png',
-    github: '#',
+    github: 'https://github.com/storks-amsterdam/conversational-agent',
     external: 'https://food-transition.web.app/',
     featured: true,
   },
