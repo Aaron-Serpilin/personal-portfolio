@@ -32,22 +32,29 @@
             :id="`panel-${activeIndex}`"
             :aria-labelledby="`tab-${activeIndex}`"
           >
-            <h3 class="experience__title">
-              {{ activeJob.title }}
-              <span class="experience__company">
-                @ <AnimatedLink :href="activeJob.url" target="_blank">{{ activeJob.company }}</AnimatedLink>
-              </span>
-            </h3>
-            <p class="experience__range">{{ activeJob.range }}</p>
-            <ul class="experience__list">
-              <li 
-                v-for="(point, idx) in activeJob.points" 
-                :key="idx" 
-                class="experience__point"
-              >
-                {{ point }}
-              </li>
-            </ul>
+            <div 
+              v-for="(position, posIdx) in activeJob.positions" 
+              :key="posIdx"
+              class="experience__position"
+              :class="{ 'experience__position--multiple': activeJob.positions.length > 1 }"
+            >
+              <h3 class="experience__title">
+                {{ position.title }}
+                <span class="experience__company">
+                  @ <AnimatedLink :href="activeJob.url" target="_blank">{{ activeJob.company }}</AnimatedLink>
+                </span>
+              </h3>
+              <p class="experience__range">{{ position.range }} • {{ position.location }}</p>
+              <ul class="experience__list">
+                <li 
+                  v-for="(point, idx) in position.points" 
+                  :key="idx" 
+                  class="experience__point"
+                >
+                  {{ point }}
+                </li>
+              </ul>
+            </div>
           </div>
         </Transition>
       </div>
@@ -57,70 +64,172 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
-import SectionHeading from '@/components/atoms/SectionHeading.vue';
-import AnimatedLink from '@/components/atoms/AnimatedLink.vue';
+import SectionHeading from '../atoms/SectionHeading.vue';
+import AnimatedLink from '../atoms/AnimatedLink.vue';
 import { 
   revealOnScroll, 
   animateNavIndicator, 
   killScrollTriggers, 
-  ScrollTrigger,
-  prefersReducedMotion 
-} from '@/animations/gsap';
+  ScrollTrigger
+} from '../../animations/gsap';
+
+interface Position {
+  title: string;
+  range: string;
+  location: string;
+  points: string[];
+}
 
 interface Job {
   company: string;
-  title: string;
   url: string;
-  range: string;
-  points: string[];
+  positions: Position[];
 }
 
 const jobs: Job[] = [
   {
-    company: 'Company A',
-    title: 'Senior Software Engineer',
-    url: 'https://company-a.com',
-    range: 'January 2023 - Present',
-    points: [
-      'Deliver high-quality, robust production code for a diverse array of projects for clients including Harvard Business School, Ev):ergive, and Consumers International',
-      'Work alongside creative directors to lead the research, development, and architecture of technical solutions to fulfill business requirements',
-      'Collaborate with designers, project managers, and other engineers to transform creative concepts into production realities for clients and stakeholders',
-      'Provide leadership within engineering department through close collaboration, knowledge shares, and mentorship',
-    ],
+    company: 'Storks Robotics Lab',
+    url: 'https://www.linkedin.com/company/storks-ai/posts/?feedView=all',
+    positions: [
+      {
+        title: 'Junior AI Software Engineer',
+        range: 'December 2025 - Present',
+        location: 'Amsterdam, Netherlands',
+        points: [
+          'Architected and deployed a production RAG platform for niche research groups, processing thousands of documents through automated Pub/Sub pipelines with Google Search Engine API integration',
+          'Built full-stack platform for Student Football League using FastAPI, PostgreSQL, and Firestore to automate scheduling, player management, and statistics for 1000+ players',
+          'Designed scalable cloud architectures on GCP using Cloud Run, Cloud Build, Artifact Registry, and Cloud SQL with Docker containerization',
+          'Developed Gemini-powered agent pipelines for document triage and semantic extraction stored in PostgreSQL with PGVector for semantic retrieval',
+          'Managed production vs development environments and delivered client-facing AI systems while maintaining code quality and system reliability'
+        ]
+      },
+      {
+        title: 'AI/ML Intern',
+        range: 'July 2025 - December 2025',
+        location: 'Amsterdam, Netherlands',
+        points: [
+          'Developed autonomous robotic systems for micro-litter collection rovers in Amsterdam, training SO101 robotic arms using Hugging Face Lerobot library and reinforcement learning',
+          'Fine-tuned ACT and SmolVLA foundation models for autonomous object manipulation, creating custom datasets hosted on Hugging Face',
+          'Deployed and trained models on edge devices (Nvidia Jetson, Raspberry Pi) via SSH, optimizing for constrained hardware environments',
+          'Researched VLA and VLM architectures through academic papers, applying theoretical knowledge to practical robotics applications',
+          'Completed coursework in agentic AI and AI system design, transitioning from theoretical knowledge to hands-on embodied AI deployment'
+        ]
+      }
+    ]
   },
   {
-    company: 'Company B',
-    title: 'Software Engineer',
-    url: 'https://company-b.com',
-    range: 'May 2021 - December 2022',
-    points: [
-      'Developed and maintained code for in-house and client websites primarily using HTML, CSS, Sass, JavaScript, and jQuery',
-      'Manually tested sites in various browsers and mobile devices to ensure cross-browser compatibility and responsiveness',
-      'Clients included JetBlue, Lov):ell, US):AA, Liberty Mutual, and more',
-    ],
+    company: 'Student Football League',
+    url: 'https://sfleague.nl/',
+    positions: [
+      {
+        title: 'Founder & President',
+        range: 'September 2022 - Present',
+        location: 'Amsterdam, Netherlands',
+        points: [
+          'Founded and scaled Amsterdam\'s first organized university football league from zero to 1000+ players, generating ≈€180,000 in revenue',
+          'Negotiated access to municipal and club-owned football pitches, building partnerships with stakeholders and securing sustainable funding',
+          'Built custom software platform to automate league operations including scheduling, player management, statistics tracking, and standings calculation',
+          'Led multi-member board and coordinated large-scale tournaments with hundreds of participants, managing finances, legal registration, and governance',
+          'Demonstrated entrepreneurial leadership by identifying a gap in student sports infrastructure and building a sustainable community-driven organization'
+        ],
+      }
+    ]
   },
   {
-    company: 'Startup',
-    title: 'Full Stack Developer',
-    url: 'https://startup.com',
-    range: 'July 2019 - April 2021',
-    points: [
-      'Developed and shipped highly interactive web applications for Apple Music using Ember.js',
-      'Built and shipped the Apple Music Extension for VS Code',
-      "Architected and implemented the front-end of Apple Music's embeddable web player widget",
-      "Contributed to Shazam's core web application modernization efforts",
-    ],
+    company: 'Hospitality Freelancing',
+    url: '#',
+    positions: [
+      {
+        title: 'Freelance Hospitality Professional',
+        range: 'December 2023 - January 2026',
+        location: 'Amsterdam, Netherlands',
+        points: [
+          'Built freelance business working across ~40 diverse hospitality venues (hotels, festivals, fine dining, bars, cafes) in roles including chef, bartender, waiter, and event staff',
+          'Demonstrated rapid adaptability and reliability in high-pressure environments, consistently securing new clients through professional communication and work ethic',
+          'Developed entrepreneurial resilience and self-marketing skills while managing independent client acquisition',
+          'Maintained consistent work quality across vastly different team structures and operational demands while supporting studies'
+        ],
+      }
+    ]
   },
   {
-    company: 'Agency',
-    title: 'Junior Developer',
-    url: 'https://agency.com',
-    range: 'May 2018 - June 2019',
-    points: [
-      'Designed and developed responsive websites for small businesses and startups',
-      'Worked directly with clients to understand requirements and deliver solutions',
-      'Gained experience with version control, agile methodologies, and collaborative development',
-    ],
+    company: 'Ceilbit',
+    url: 'https://www.linkedin.com/company/ceilbit/',
+    positions: [
+      {
+        title: 'Web Development Intern',
+        range: 'May 2023 - July 2023',
+        location: 'Quito, Ecuador',
+        points: [
+          'Contributed to startup platform development using Svelte, developing frontend components and collaborating in larger codebases',
+          'Assisted with customer outreach and deal acquisition, balancing technical work with business development',
+          'Gained exposure to startup development workflows and client-facing communication in fast-paced environment'
+        ],
+      }
+    ]
+  },
+  {
+    company: 'Reto Cotopaxi',
+    url: '#',
+    positions: [
+      {
+        title: 'Founder & Program Lead',
+        range: 'December 2021 - August 2022',
+        location: 'Quito, Ecuador',
+        points: [
+          'Founded and led mountaineering training program preparing 250+ beginners to summit Cotopaxi (5,897m), generating ≈$75,000 revenue in 7 months',
+          'Designed multi-stage training curriculum and provided technical climbing instruction, managing all logistics, travel coordination, and safety protocols',
+          'Identified accessibility gap in Ecuador\'s hiking community and built mission-driven solution from ground up',
+          'Developed pricing strategy, marketing campaigns, and community management while leading participants through extreme environments',
+          'First major entrepreneurial venture demonstrating ability to build organizations around shared goals and manage risk in high-stakes situations'
+        ],
+      },
+      {
+        title: 'Program Collaborator',
+        range: 'November 2021 - April 2022',
+        location: 'Ecuador',
+        points: [
+          'Collaborated with Juventud Latam youth development nonprofit to promote mountaineering among young people',
+          'Expanded nonprofit revenue streams through mountaineering initiatives, aligning entrepreneurial projects with impact goals',
+          'Participated in interviews and awareness campaigns to increase youth engagement in outdoor activities',
+          'Helped design and execute outreach programs, learning to balance mission-driven work with sustainable business models'
+        ],
+      }
+    ]
+  },
+  {
+    company: 'Shellshock Inc',
+    url: 'https://www.linkedin.com/company/shellshock-inc-/',
+    positions: [
+      {
+        title: 'Frontend Development Intern',
+        range: 'July 2021 - November 2021',
+        location: 'Miami, USA (Remote)',
+        points: [
+          'Built multiple production websites using React, JavaScript, CSS, Firebase, and Firestore at American web agency',
+          'Completed structured web development coursework, establishing frontend engineering fundamentals',
+          'Collaborated with professional developers in corporate workflows, learning professional teamwork and development practices',
+          'Foundational role that established technical skills leading to later software engineering positions'
+        ],
+      }
+    ]
+  },
+  {
+    company: 'M2ecu',
+    url: 'https://www.linkedin.com/company/m2ecu/',
+    positions: [
+      {
+        title: 'Finance Intern',
+        range: 'April 2019 - April 2020',
+        location: 'Quito, Ecuador',
+        points: [
+          'Supported accounting and purchasing operations at construction company, managing tax and accounting data entry',
+          'Structured and interlinked complex financial spreadsheets, developing foundational organizational and spreadsheet systems',
+          'Assisted with procurement, logistics, and on-site operations alongside CEO, gaining early people management exposure',
+          'Built business fundamentals and financial skills that later supported entrepreneurial ventures and operational leadership'
+        ],
+      }
+    ]
   },
 ];
 
@@ -256,6 +365,24 @@ onUnmounted(() => {
 
 .experience__panel {
   padding-top: var(--space-sm);
+}
+
+.experience__position {
+  margin-bottom: var(--space-2xl);
+}
+
+.experience__position:last-child {
+  margin-bottom: 0;
+}
+
+.experience__position--multiple {
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-bg-lighter);
+}
+
+.experience__position--multiple:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .experience__title {

@@ -20,7 +20,7 @@
         </p>
         <p>
           I have also had the privilege of creating and leading two businesses at
-          <AnimatedLink href="#"> Reto Cotopaxi - Club Amaru </AnimatedLink>,
+          <AnimatedLink href="#"> Reto Cotopaxi </AnimatedLink>,
           <AnimatedLink href="https://www.sfleague.nl/" target="_blank"> Student Football League </AnimatedLink>.
         </p>
         <p>Here are a few technologies I've been working with recently:</p>
