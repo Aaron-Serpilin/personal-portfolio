@@ -1,6 +1,11 @@
+.venv
 .vscode
-__pycache__/
 .DS_Store
-src/data/
+__pycache__/
+dist/
+build/
+*.pyc
+node_modules/
+src/data/*
 !src/data/corpus_charter.md
 !src/data/system_prompt.py
