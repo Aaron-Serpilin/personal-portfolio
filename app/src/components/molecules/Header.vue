@@ -43,9 +43,6 @@
             </router-link>
           </li>
         </ol>
-        <BaseButton as="a" href="/resume.pdf" target="_blank" size="sm">
-          Resume
-        </BaseButton>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -61,6 +58,15 @@
         <span class="menu-bar"></span>
       </button>
     </nav>
+
+    <!-- Mobile Menu Backdrop -->
+    <Transition name="backdrop">
+      <div 
+        v-if="isMobileMenuOpen" 
+        class="mobile-menu__backdrop"
+        @click="closeMobileMenu"
+      ></div>
+    </Transition>
 
     <!-- Mobile Menu -->
     <Transition name="mobile-menu">
@@ -78,9 +84,7 @@
               </router-link>
             </li>
           </ol>
-          <BaseButton as="a" href="/resume.pdf" target="_blank" size="lg">
-            Resume
-          </BaseButton>
+
         </nav>
       </div>
     </Transition>
@@ -278,6 +282,15 @@ onUnmounted(() => {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Mobile Menu Backdrop */
+.mobile-menu__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(3px);
+  z-index: calc(var(--z-fixed) - 1);
+}
+
 /* Mobile Menu */
 .mobile-menu {
   position: fixed;
@@ -285,10 +298,11 @@ onUnmounted(() => {
   right: 0;
   bottom: 0;
   width: min(75vw, 400px);
-  background-color: var(--color-bg-light);
+  background-color: var(--color-bg);
   padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-2xl) var(--space-2xl);
-  box-shadow: var(--shadow-xl);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   z-index: var(--z-fixed);
+  overflow-y: auto;
 }
 
 .mobile-menu__nav {
@@ -338,5 +352,16 @@ onUnmounted(() => {
 .mobile-menu-enter-from,
 .mobile-menu-leave-to {
   transform: translateX(100%);
+}
+
+/* Backdrop Transitions */
+.backdrop-enter-active,
+.backdrop-leave-active {
+  transition: opacity var(--dur-3) var(--ease-out);
+}
+
+.backdrop-enter-from,
+.backdrop-leave-to {
+  opacity: 0;
 }
 </style>

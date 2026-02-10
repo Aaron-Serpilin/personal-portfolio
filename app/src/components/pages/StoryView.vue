@@ -176,7 +176,10 @@
                 <strong>From Hospitality:</strong> Consistent hard work earns trust and respect.
               </li>
               <li>
-                <strong>From Reto Cotopaxi:</strong> Running a business is a constant commitment, 
+                <strong>From Reto Cotopaxi:</strong> The most meaningful achievements are shared. True leadership is lowering the barrier for others so they can reach their passions alongside you.
+              </li>
+              <li>
+                <strong>From M2ecu:</strong> Running a business is a constant commitment, 
                 even outside office hours.
               </li>
             </ul>
