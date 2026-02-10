@@ -7,3 +7,4 @@ cred.json
 app.yaml
 .DS_Store
 src/data
+app/src/config.ts

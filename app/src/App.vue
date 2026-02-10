@@ -17,6 +17,7 @@
       </Transition>
     </router-view>
     <TheFooter />
+    <ChatbotLauncher />
     <div class="bg-gradient" aria-hidden="true"></div>
   </div>
 </template>
@@ -26,6 +27,7 @@ import { ref } from "vue";
 import Header from "./components/molecules/Header.vue";
 import TheFooter from "./components/molecules/TheFooter.vue";
 import SocialSidebar from "./components/molecules/SocialSidebar.vue";
+import ChatbotLauncher from "./components/molecules/ChatbotLauncher.vue";
 import { pageEnter, pageLeave, prefersReducedMotion } from "./animations/gsap";
 
 const isMenuOpen = ref(false);
@@ -69,7 +71,7 @@ const onLeave = (el: Element, done: () => void) => {
   min-height: 100vh;
 }
 
-.blur-content > *:not(.mobile-menu) {
+.blur-content > *:not(.mobile-menu):not(.chatbot-wrapper) {
   filter: blur(5px);
   pointer-events: none;
 }
