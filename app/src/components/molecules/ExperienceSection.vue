@@ -204,7 +204,7 @@ const jobs: Job[] = [
       {
         title: 'Frontend Development Intern',
         range: 'July 2021 - November 2021',
-        location: 'Miami, USA (Remote)',
+        location: 'Miami, USA',
         points: [
           'Built multiple production websites using React, JavaScript, CSS, Firebase, and Firestore at American web agency',
           'Completed structured web development coursework, establishing frontend engineering fundamentals',
