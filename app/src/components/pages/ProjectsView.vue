@@ -4,7 +4,7 @@
       <header class="projects-page__header" ref="headerRef">
         <h1 class="projects-page__title">All Projects</h1>
         <p class="projects-page__description">
-          A big list of things I've worked on
+          A list of things I've worked on
         </p>
       </header>
 
@@ -194,6 +194,7 @@ onUnmounted(() => {
 .projects-page__description {
   font-size: var(--fs-lg);
   color: var(--color-text-secondary);
+  text-align: center;
 }
 
 /* Filters */

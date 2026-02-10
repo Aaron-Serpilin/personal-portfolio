@@ -57,7 +57,7 @@ export const projects: Project[] = [
     title: 'Oral Screen PhD Research Website',
     description:
       "Built a multilingual research website supporting early cancer detection studies at Amsterdam UMC. Developed a clean, responsive multilingual interface (6 languages) and integrated form submission pipeline to research email systems.",
-    tech: ['Vue.js', 'Google Cloud Platform', 'Firebase', 'Firestore'],
+    tech: ['Vue.js', 'Google Cloud Platform', 'GCP', 'Firebase', 'Firestore'],
     year: 2026,
     github: 'https://github.com/storks-amsterdam/cancer-detection-website',
     external: 'https://oralscreen.org/',
