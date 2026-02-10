@@ -174,7 +174,6 @@ API_KEY=your-openai-api-key
 ```json
 {
   "assistant_message": "Aaron has worked on several projects...",
-  "sources": ["project_breakdown.json", "corpus_charter.md"],
   "rate_limited": false
 }
 ```
@@ -223,9 +222,7 @@ personal-portfolio/
 ├── src/                    # Backend (FastAPI)
 │   ├── data/              # Portfolio documents
 │   │   ├── corpus_charter.md
-│   │   ├── experience_breakdown.json
-│   │   ├── project_breakdown.json
-│   │   └── story.json
+│   │   
 │   ├── main.py            # API endpoints + rate limiting
 │   ├── chatbot.py         # LangGraph RAG pipeline
 │   ├── schemas.py         # Pydantic models

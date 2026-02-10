@@ -159,7 +159,7 @@ const jobs: Job[] = [
       {
         title: 'Web Development Intern',
         range: 'May 2023 - July 2023',
-        location: 'Quito, Ecuador',
+        location: 'Amsterdam, Netherlands',
         points: [
           'Contributed to startup platform development using Svelte, developing frontend components and collaborating in larger codebases',
           'Assisted with customer outreach and deal acquisition, balancing technical work with business development',
@@ -187,7 +187,7 @@ const jobs: Job[] = [
       {
         title: 'Program Collaborator',
         range: 'November 2021 - April 2022',
-        location: 'Ecuador',
+        location: 'Quito, Ecuador',
         points: [
           'Collaborated with Juventud Latam youth development nonprofit to promote mountaineering among young people',
           'Expanded nonprofit revenue streams through mountaineering initiatives, aligning entrepreneurial projects with impact goals',
