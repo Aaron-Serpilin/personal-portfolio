@@ -49,7 +49,7 @@
               class="projects-page__row"
             >
               <td class="projects-page__td projects-page__year">
-                <AccentText mono>2024</AccentText>
+                <AccentText mono>{{ project.year }}</AccentText>
               </td>
               <td class="projects-page__td projects-page__title-cell">
                 {{ project.title }}

@@ -1,13 +1,10 @@
 <template>
   <section class="other-projects section" ref="sectionRef">
     <h2 class="other-projects__title">Other Noteworthy Projects</h2>
-    <router-link to="/projects" class="other-projects__archive">
-      <AnimatedLink as="span">view the archive</AnimatedLink>
-    </router-link>
-
+    
     <ul class="other-projects__grid" ref="gridRef">
       <li 
-        v-for="project in displayedProjects" 
+        v-for="project in otherProjects" 
         :key="project.title"
         class="other-projects__item"
       >
@@ -15,19 +12,14 @@
       </li>
     </ul>
 
-    <BaseButton 
-      v-if="hasMoreProjects && !showAll" 
-      @click="showAll = true"
-      class="other-projects__more"
-    >
-      Show More
-    </BaseButton>
+    <router-link to="/projects" class="other-projects__archive">
+      <AnimatedLink as="span">view the full archive</AnimatedLink>
+    </router-link>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import BaseButton from '@/components/atoms/BaseButton.vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import AnimatedLink from '@/components/atoms/AnimatedLink.vue';
 import ProjectCard from '@/components/molecules/ProjectCard.vue';
 import { projects } from '@/data/projects';
@@ -35,18 +27,11 @@ import { staggerChildren, killScrollTriggers, ScrollTrigger } from '@/animations
 
 const sectionRef = ref<HTMLElement | null>(null);
 const gridRef = ref<HTMLElement | null>(null);
-const showAll = ref(false);
 
 const scrollTriggers: (ScrollTrigger | null)[] = [];
 
 // Get non-featured projects
 const otherProjects = projects.filter(p => !p.featured);
-
-const hasMoreProjects = computed(() => otherProjects.length > 6);
-
-const displayedProjects = computed(() => {
-  return showAll.value ? otherProjects : otherProjects.slice(0, 6);
-});
 
 onMounted(() => {
   if (gridRef.value) {
@@ -63,35 +48,54 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.other-projects {
-  text-align: center;
-}
+    .other-projects {
+    text-align: center;
+    }
 
-.other-projects__title {
-  font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-sm);
-}
+    .other-projects__title {
+    font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3xl);
+    }
 
-.other-projects__archive {
-  display: inline-block;
-  margin-bottom: var(--space-3xl);
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  color: var(--color-accent);
-  text-decoration: none;
-}
+    .other-projects__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    list-style: none;
+    padding: 0;
+    margin: 0 auto var(--space-3xl);
+    max-width: 1200px;
+    }
 
-.other-projects__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-lg);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+    @media (max-width: 1024px) {
+    .other-projects__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
 
-.other-projects__more {
-  margin-top: var(--space-3xl);
-}
+    @media (max-width: 640px) {
+    .other-projects__grid {
+        grid-template-columns: 1fr;
+    }
+    }
+
+    .other-projects__item {
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    }
+
+    /* Center single item in last row */
+    .other-projects__item:nth-child(3n+1):nth-last-child(1) {
+    grid-column: 2 / 3;
+    }
+
+    .other-projects__archive {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--color-accent);
+    text-decoration: none;
+    }
 </style>

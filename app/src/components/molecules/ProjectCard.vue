@@ -204,13 +204,15 @@ onUnmounted(() => {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-md);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-bg-lighter);
 }
 
 .project-card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform var(--dur-4) var(--ease-out);
 }
 

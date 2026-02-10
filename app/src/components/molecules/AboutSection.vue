@@ -121,11 +121,11 @@ const skills = [
 
 // Carousel images
 const images = [
-  { src: '/profile.jpg', alt: 'Aaron Serpilin' },
-  { src: '/hiking.jpg', alt: 'Hiking Antisana 2022' },
-  { src: '/football.jpg', alt: 'Student Football League match' },
-  { src: '/Marsik.png', alt: 'Marsik and I, Rucu Pichincha 2022' },
-  { src: '/running.JPEG', alt: 'Amsterdam Marathon 2024' },
+  { src: '/images/personal/profile.jpg', alt: 'Aaron Serpilin' },
+  { src: '/images/personal/hiking.jpg', alt: 'Hiking Antisana 2022' },
+  { src: '/images/personal/football.jpg', alt: 'Student Football League match' },
+  { src: '/images/personal/Marsik.png', alt: 'Marsik and I, Rucu Pichincha 2022' },
+  { src: '/images/personal/running.JPEG', alt: 'Amsterdam Marathon 2024' },
 ];
 
 const currentImageIndex = ref(0);
