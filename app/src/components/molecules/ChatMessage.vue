@@ -19,7 +19,7 @@
       </svg>
     </div>
     <div class="chat-message__content">
-      <span class="chat-message__label">{{ role === 'user' ? 'You' : 'Aaron\'s AI' }}</span>
+      <span class="chat-message__label">{{ role === 'user' ? 'You' : 'Marsik' }}</span>
       <p class="chat-message__text">{{ content }}</p>
     </div>
   </div>
