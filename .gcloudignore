@@ -1,0 +1,6 @@
+.vscode
+__pycache__/
+.DS_Store
+src/data/
+!src/data/corpus_charter.md
+!src/data/system_prompt.py
