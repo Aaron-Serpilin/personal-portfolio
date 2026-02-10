@@ -5,7 +5,7 @@
         <header class="story__header" ref="headerRef">
           <h1 class="story__title">My Story</h1>
           <p class="story__subtitle">
-            From the mountains of Ecuador to building software that matters
+            From chasing summits to building systems that help others reach theirs
           </p>
         </header>
 
