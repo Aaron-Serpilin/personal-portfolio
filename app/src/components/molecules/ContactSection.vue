@@ -7,8 +7,8 @@
     <h2 class="contact__title" ref="titleRef">Get In Touch</h2>
     
     <p class="contact__description" ref="descRef">
-      I'm currently looking for new opportunities and my inbox is always open. 
-      Whether you have a question or just want to say hi, I'll try my best to get back to you!
+      I’m currently looking for new opportunities and would love to join a team working on meaningful AI and software projects with real impact. <br>
+      If you have a question, an idea, or simply want to connect, feel free to reach out — I’ll do my best to get back to you!
     </p>
 
     <div ref="ctaRef">

@@ -1,6 +1,6 @@
 <template>
   <section class="experience section" ref="sectionRef">
-    <SectionHeading :level="2" numbered :number="2">Where I've Worked</SectionHeading>
+    <SectionHeading :level="2" numbered :number="2">Experience</SectionHeading>
 
     <div class="experience__content">
       <!-- Tabs -->

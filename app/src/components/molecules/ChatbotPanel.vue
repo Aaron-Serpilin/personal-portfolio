@@ -40,7 +40,7 @@
           <h4 class="chatbot-panel__welcome-title">Hi! I'm Marsik, Aaron's AI assistant</h4>
           <p class="chatbot-panel__welcome-text">
             Ask me anything about Aaron's experience, projects, skills, or background. 
-            I only answer based on his portfolio documents.
+            This chatbot has cold starts, so your first answer might take a bit. 
           </p>
           <div class="chatbot-panel__suggestions">
             <button 

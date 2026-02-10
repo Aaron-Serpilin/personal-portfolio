@@ -98,13 +98,13 @@ gcloud builds submit --config cloudbuild.yaml .
 ### Allow Unauthenticated users to access Cloud Run
 
 ```bash
-gcloud beta run services add-iam-policy-binding --region=europe-west1 --member=allUsers --role=roles/run.invoker fast-api
+gcloud beta run services add-iam-policy-binding --region=europe-west4 --member=allUsers --role=roles/run.invoker fast-api
 ```
 
 In case that the Cloud Run has no IAM Bindings at all, not allowing public invocation, run the following command:
 ```bash
 gcloud run services add-iam-policy-binding fast-api \
-  --region=europe-west1 \
+  --region=europe-west4 \
   --member="allUsers" \
   --role="roles/run.invoker"
 ```
@@ -143,28 +143,13 @@ fastapi dev main.py --port 8080
 
 ### Frontend Setup
 
-For local development, update the API URL in your environment:
-
-```bash
-cd app
-
-# Create .env.local file
-echo "VITE_API_URL=http://127.0.0.1:8080" > .env.local
-
-# Run the dev server
-npm run dev
-```
+For local development, update the API URL in `config.ts`, either toggling the development or production API.
 
 ### Environment Variables
 
 **Backend (`src/.env`):**
 ```
 API_KEY=your-openai-api-key
-```
-
-**Frontend (`app/.env.local`):**
-```
-VITE_API_URL=http://127.0.0.1:8080
 ```
 
 ### API Endpoints
