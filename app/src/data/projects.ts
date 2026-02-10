@@ -23,6 +23,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: 'DeepSummit',
+    description:
+      "Developed a novel dual-transformer deep learning architecture predicting Himalayan summit success using combined personal and meteorological data. Designed custom data fusion mechanisms with 7-day meteorological windowing, implemented intra-sample and inter-sample attention mechanisms, and achieved ~90% prediction accuracy in a complex domain.",
+    tech: ['Python', 'PyTorch', 'Transformers', 'Deep Learning', 'Machine Learning'],
+    year: 2025,
+    image: '/images/projects/deepsummit.png',
+    github: 'https://github.com/Aaron-Serpilin/DeepSummit',
+    featured: true,
+  },
+  {
     title: 'SFL Community Platform',
     description:
       "Engineered a full-stack platform automating operations for a large student football league with 1000+ players. Built a high-traffic SQL backend with pooled connections, implemented authentication and ~100 API endpoints, automated tournament creation, scheduling, match tracking, and player stats. Integrated Stripe payments via webhooks for tournament registration.",
@@ -31,16 +41,6 @@ export const projects: Project[] = [
     image: '/images/projects/sfl-platform.png',
     github: 'https://github.com/storks-amsterdam/sfl-website',
     external: 'https://sfleague.nl/',
-    featured: true,
-  },
-  {
-    title: 'DeepSummit',
-    description:
-      "Developed a novel dual-transformer deep learning architecture predicting Himalayan summit success using combined personal and meteorological data. Designed custom data fusion mechanisms with 7-day meteorological windowing, implemented intra-sample and inter-sample attention mechanisms, and achieved ~90% prediction accuracy in a complex domain.",
-    tech: ['Python', 'PyTorch', 'Transformers', 'Deep Learning', 'Machine Learning'],
-    year: 2025,
-    image: '/images/projects/deepsummit.png',
-    github: 'https://github.com/Aaron-Serpilin/DeepSummit',
     featured: true,
   },
 

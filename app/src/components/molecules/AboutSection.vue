@@ -5,45 +5,36 @@
     <div class="about__content">
       <div class="about__text" ref="textRef">
         <p>
-          Hey! My name is <AccentText>Aaron Serpilin</AccentText>. I like building things that feel real to people — products, communities, and
-          small ideas that turn into something useful.
+          Hey! I’m <AccentText>Aaron Serpilin</AccentText>. I’m drawn to building things that fill real gaps —
+          whether that’s software, communities, or systems that make life a little easier for people.
         </p>
 
         <p>
-          Outside of tech, you’ll usually find me in the mountains or around a football pitch. I’m a passionate mountaineer (a few 5K and 6K
-          summits along the way), and I’m equally obsessed with sports and training. Gym, running, kickboxing — I’m in. Add investing, crypto, AI, reading,
-          and trying random new things, and that’s most of my free time.
+          Outside of tech, you’ll usually find me in the mountains, running, kickboxing or around a football pitch.
+          Mountaineering and sports have shaped how I approach challenges:
+          steady progress, teamwork, and enjoying the process.
         </p>
 
         <p>
-          What drives me most is simple: I love chasing my own passions, and I love helping other people chase theirs. The moments I’m proudest
-          of usually came from building something that gave others a shot — whether that’s a community, an event, a tool, or just the push to get
-          started. I’m ambitious, I work hard, and as I keep growing, I try to let consistency and curiosity close any gaps in what I still need
-          to learn.
+          What drives me most is helping people reach their goals alongside me.
+          The projects I’m proudest of started from zero —
+          founding a mountaineering program in Ecuador and later building the Student Football League in Amsterdam,
+          both created to solve problems I personally felt.
         </p>
 
         <p>
-          I started programming in 2019, building simple HTML/CSS sites after the
-          <AnimatedLink href="https://www.webdesign.solomon.ng/" target="_blank"> Interneting is Hard </AnimatedLink>
-          free online course. Since then I’ve kept learning by doing — through courses and bootcamps like
-          <AnimatedLink href="https://www.fullstackacademy.com/" target="_blank">FullStack Academy's </AnimatedLink>
-          boot camp in 2020,
-          <AnimatedLink href="https://zerotomastery.io/" target="_blank"> ZOTM's </AnimatedLink> PyTorch course,
-          <AnimatedLink href="https://huggingface.co/" target="_blank"> HuggingFace's </AnimatedLink> Agentic AI course,
-          and plenty of projects in between.
+          I’m ambitious, I work hard, and as I keep growing,
+          I try to let consistency and curiosity close any gaps in what I still need to learn.
+          That mindset has let me step into unfamiliar territory again and again —
+          building initiatives without a roadmap and embracing the steep learning curves in my studies and work.
+          I’ve learned to treat uncertainty as an invitation to grow,
+          not a barrier to entry.
         </p>
 
         <p>
-          Fast-forward to today, I’ve had the privilege of interning/working at
-          <AnimatedLink href="https://www.linkedin.com/company/shellshock-inc-/" target="_blank"> ShellShock Inc</AnimatedLink>,
-          <AnimatedLink href="https://www.linkedin.com/company/ceilbit/" target="_blank"> Ceilbit </AnimatedLink>, and
-          <AnimatedLink href="https://www.linkedin.com/company/storks-ai/posts/?feedView=all" target="_blank"> Storks Robotics Lab</AnimatedLink>.
-        </p>
-
-        <p>
-          I’ve also had the privilege of building and leading two businesses:
-          <AnimatedLink href="#"> Reto Cotopaxi </AnimatedLink>,
-          <AnimatedLink href="https://www.sfleague.nl/" target="_blank"> Student Football League </AnimatedLink>.
+          Today I focus on building software that’s useful in the real world,
+          blending engineering with the same mindset that guided those initiatives:
+          identify the need, learn what’s missing, and build something that works.
         </p>
 
         <p>Here are a few technologies I've been working with recently:</p>
