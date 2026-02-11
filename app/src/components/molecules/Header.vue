@@ -58,7 +58,10 @@
         <span class="menu-bar"></span>
       </button>
     </nav>
+  </header>
 
+  <!-- Teleport mobile menu to body to avoid stacking context issues from header transforms -->
+  <Teleport to="body">
     <!-- Mobile Menu Backdrop -->
     <Transition name="backdrop">
       <div 
@@ -70,7 +73,7 @@
 
     <!-- Mobile Menu -->
     <Transition name="mobile-menu">
-      <div v-if="isMobileMenuOpen" class="mobile-menu" :key="'mobile-menu'">
+      <div v-if="isMobileMenuOpen" class="mobile-menu">
         <nav class="mobile-menu__nav" aria-label="Mobile navigation">
           <ol class="mobile-nav-list">
             <li v-for="(link, index) in navLinks" :key="link.path" class="mobile-nav-item">
@@ -84,11 +87,10 @@
               </router-link>
             </li>
           </ol>
-
         </nav>
       </div>
     </Transition>
-  </header>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -254,7 +256,8 @@ onUnmounted(() => {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: var(--z-modal);
+  position: relative;
+  z-index: 1000;
 }
 
 @media (min-width: 768px) {
@@ -287,16 +290,41 @@ onUnmounted(() => {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile Menu Backdrop */
+/* Mobile Menu Transitions */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: transform var(--dur-4) var(--ease-out);
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  transform: translateX(100%);
+}
+
+/* Backdrop Transitions */
+.backdrop-enter-active,
+.backdrop-leave-active {
+  transition: opacity var(--dur-3) var(--ease-out);
+}
+
+.backdrop-enter-from,
+.backdrop-leave-to {
+  opacity: 0;
+}
+</style>
+
+<!-- Non-scoped styles for teleported mobile menu elements -->
+<style>
+/* Mobile Menu Backdrop - Teleported to body */
 .mobile-menu__backdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(10, 25, 47, 0.95);
   backdrop-filter: blur(5px);
-  z-index: var(--z-modal-backdrop);
+  z-index: 998;
 }
 
-/* Mobile Menu */
+/* Mobile Menu - Teleported to body */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -306,7 +334,7 @@ onUnmounted(() => {
   background-color: var(--color-bg-light);
   padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-2xl) var(--space-2xl);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-  z-index: var(--z-modal);
+  z-index: 999;
   overflow-y: auto;
   will-change: transform;
 }
@@ -349,7 +377,7 @@ onUnmounted(() => {
   color: var(--color-accent);
 }
 
-/* Mobile Menu Transitions */
+/* Mobile Menu Transitions - Non-scoped */
 .mobile-menu-enter-active,
 .mobile-menu-leave-active {
   transition: transform var(--dur-4) var(--ease-out);
@@ -360,7 +388,7 @@ onUnmounted(() => {
   transform: translateX(100%);
 }
 
-/* Backdrop Transitions */
+/* Backdrop Transitions - Non-scoped */
 .backdrop-enter-active,
 .backdrop-leave-active {
   transition: opacity var(--dur-3) var(--ease-out);
