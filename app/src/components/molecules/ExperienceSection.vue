@@ -3,7 +3,26 @@
     <SectionHeading :level="2" numbered :number="2">Experience</SectionHeading>
 
     <div class="experience__content">
-      <!-- Tabs -->
+      <!-- Mobile Dropdown Selector -->
+      <div class="experience__mobile-selector">
+        <label for="job-selector" class="experience__selector-label">Select Company:</label>
+        <select 
+          id="job-selector"
+          v-model="activeIndex"
+          class="experience__selector"
+          @change="updateIndicator"
+        >
+          <option 
+            v-for="(job, index) in jobs" 
+            :key="job.company"
+            :value="index"
+          >
+            {{ job.company }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Desktop Tabs -->
       <div class="experience__tabs" role="tablist" aria-label="Job tabs" ref="tabsRef">
         <button
           v-for="(job, index) in jobs"
@@ -289,16 +308,56 @@ onUnmounted(() => {
   }
 }
 
-/* Tabs */
+/* Mobile Dropdown Selector */
+.experience__mobile-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 700px) {
+  .experience__mobile-selector {
+    display: none;
+  }
+}
+
+.experience__selector-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-medium);
+}
+
+.experience__selector {
+  padding: var(--space-md);
+  background-color: var(--color-bg-light);
+  border: 2px solid var(--color-bg-lighter);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: 
+    border-color var(--dur-2) var(--ease-out),
+    background-color var(--dur-2) var(--ease-out);
+}
+
+.experience__selector:hover,
+.experience__selector:focus {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-tint);
+  outline: none;
+}
+
+/* Tabs - Hide on mobile */
 .experience__tabs {
   position: relative;
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  display: none;
 }
 
 @media (min-width: 700px) {
   .experience__tabs {
+    display: flex;
     flex-direction: column;
     min-width: 140px;
     border-left: 2px solid var(--color-bg-lighter);

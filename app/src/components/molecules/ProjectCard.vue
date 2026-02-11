@@ -187,12 +187,15 @@ onUnmounted(() => {
 
 .project-card--featured .project-card__image-wrapper {
   grid-column: 1 / -1;
-  grid-row: 1 / -1;
+  grid-row: 1 / 1;
+  margin-bottom: var(--space-md);
 }
 
 @media (min-width: 768px) {
   .project-card--featured .project-card__image-wrapper {
     grid-column: 1 / 8;
+    grid-row: 1 / -1;
+    margin-bottom: 0;
   }
 
   .project-card--featured.project-card--reverse .project-card__image-wrapper {
@@ -224,6 +227,23 @@ onUnmounted(() => {
   transition: background-color var(--dur-3) var(--ease-out);
 }
 
+@media (min-width: 768px) {
+  .project-card__image-overlay {
+    mix-blend-mode: multiply;
+  }
+}
+
+/* Remove overlay on mobile for better visibility */
+@media (max-width: 767px) {
+  .project-card__image-overlay {
+    display: none;
+  }
+  
+  .project-card__image {
+    filter: none;
+  }
+}
+
 .project-card:hover .project-card__image-overlay {
   background-color: transparent;
 }
@@ -236,20 +256,20 @@ onUnmounted(() => {
 
 .project-card--featured .project-card__content {
   grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--space-xl);
-  background-color: rgba(17, 34, 64, 0.9);
+  grid-row: 2 / 2;
+  padding: var(--space-lg);
+  background-color: var(--color-bg-light);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
 }
 
 @media (min-width: 768px) {
   .project-card--featured .project-card__content {
     grid-column: 6 / -1;
+    grid-row: 1 / -1;
     padding: 0;
     background-color: transparent;
+    box-shadow: none;
     text-align: right;
     align-items: flex-end;
   }
@@ -297,6 +317,12 @@ onUnmounted(() => {
   }
 }
 
+@media (max-width: 767px) {
+  .project-card--featured .project-card__description {
+    font-size: var(--fs-sm);
+  }
+}
+
 .project-card__tech {
   display: flex;
   flex-wrap: wrap;
@@ -304,6 +330,12 @@ onUnmounted(() => {
   list-style: none;
   padding: 0;
   margin: 0 0 var(--space-lg) 0;
+}
+
+@media (max-width: 767px) {
+  .project-card__tech {
+    gap: var(--space-xs);
+  }
 }
 
 @media (min-width: 768px) {

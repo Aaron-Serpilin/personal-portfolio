@@ -60,7 +60,7 @@ onUnmounted(() => {
 
     .other-projects__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-lg);
     list-style: none;
     padding: 0;
@@ -68,27 +68,23 @@ onUnmounted(() => {
     max-width: 1200px;
     }
 
-    @media (max-width: 1024px) {
-    .other-projects__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    }
-
     @media (max-width: 640px) {
     .other-projects__grid {
         grid-template-columns: 1fr;
+        gap: var(--space-md);
     }
     }
 
     .other-projects__item {
     width: 100%;
-    min-height: 350px;
+    min-height: 320px;
     display: flex;
     }
 
-    /* Center single item in last row */
-    .other-projects__item:nth-child(3n+1):nth-last-child(1) {
-    grid-column: 2 / 3;
+    @media (max-width: 640px) {
+    .other-projects__item {
+        min-height: 280px;
+    }
     }
 
     .other-projects__archive {

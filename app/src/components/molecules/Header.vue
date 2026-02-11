@@ -70,7 +70,7 @@
 
     <!-- Mobile Menu -->
     <Transition name="mobile-menu">
-      <div v-if="isMobileMenuOpen" class="mobile-menu">
+      <div v-if="isMobileMenuOpen" class="mobile-menu" :key="'mobile-menu'">
         <nav class="mobile-menu__nav" aria-label="Mobile navigation">
           <ol class="mobile-nav-list">
             <li v-for="(link, index) in navLinks" :key="link.path" class="mobile-nav-item">
@@ -94,7 +94,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import BaseButton from '@/components/atoms/BaseButton.vue';
 import { createHeaderScrollAnimation, prefersReducedMotion } from '@/animations/gsap';
 
 interface NavLink {
@@ -110,7 +109,6 @@ const navLinks: NavLink[] = [
 
 const route = useRoute();
 const headerRef = ref<HTMLElement | null>(null);
-const navItemsRef = ref<HTMLElement[]>([]);
 const isHidden = ref(false);
 const isMobileMenuOpen = ref(false);
 
@@ -125,13 +123,20 @@ const isActive = (path: string): boolean => {
 };
 
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-  document.body.style.overflow = isMobileMenuOpen.value ? 'hidden' : '';
+  const willOpen = !isMobileMenuOpen.value;
+  isMobileMenuOpen.value = willOpen;
+  
+  // Use nextTick to ensure DOM updates before changing overflow
+  setTimeout(() => {
+    document.body.style.overflow = willOpen ? 'hidden' : '';
+  }, 0);
 };
 
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
-  document.body.style.overflow = '';
+  setTimeout(() => {
+    document.body.style.overflow = '';
+  }, 300); // Match transition duration
 };
 
 // Close mobile menu on route change
@@ -286,9 +291,9 @@ onUnmounted(() => {
 .mobile-menu__backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(3px);
-  z-index: calc(var(--z-fixed) - 1);
+  background-color: rgba(10, 25, 47, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: var(--z-modal-backdrop);
 }
 
 /* Mobile Menu */
@@ -298,11 +303,12 @@ onUnmounted(() => {
   right: 0;
   bottom: 0;
   width: min(75vw, 400px);
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-light);
   padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-2xl) var(--space-2xl);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-  z-index: var(--z-fixed);
+  z-index: var(--z-modal);
   overflow-y: auto;
+  will-change: transform;
 }
 
 .mobile-menu__nav {

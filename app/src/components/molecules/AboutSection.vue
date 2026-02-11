@@ -37,13 +37,26 @@
           identify the need, learn what’s missing, and build something that works.
         </p>
 
-        <p>Here are a few technologies I've been working with recently:</p>
+        <p>Here are some of the technologies I work with:</p>
 
-        <ul class="about__skills" ref="skillsRef">
-          <li v-for="skill in skills" :key="skill" class="about__skill">
-            {{ skill }}
-          </li>
-        </ul>
+        <div class="about__skills-categories" ref="skillsRef">
+          <div 
+            v-for="category in skillCategories" 
+            :key="category.title"
+            class="about__skill-category"
+          >
+            <h4 class="about__category-title">{{ category.title }}</h4>
+            <ul class="about__skills">
+              <li 
+                v-for="skill in category.skills" 
+                :key="skill" 
+                class="about__skill"
+              >
+                {{ skill }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="about__image-wrapper" ref="imageRef">
@@ -83,7 +96,7 @@
           <!-- Indicators -->
           <div v-if="images.length > 1" class="about__carousel-indicators">
             <button
-              v-for="(image, index) in images"
+              v-for="(_, index) in images"
               :key="index"
               class="about__carousel-indicator"
               :class="{ 'about__carousel-indicator--active': index === currentImageIndex }"
@@ -101,36 +114,29 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import SectionHeading from '../atoms/SectionHeading.vue';
 import AccentText from '../atoms/AccentText.vue';
-import AnimatedLink from '../atoms/AnimatedLink.vue';
 import { revealOnScroll, staggerChildren, killScrollTriggers, ScrollTrigger } from '../../animations/gsap';
 
-const skills = [
-    'Python',
-    'C++',
-    'JavaScript',
-    'PyTorch',
-    'Shell',
-    'Edge Nvidia',
-    'Google Cloud Platform',
-    'Cloud Build',
-    'Cloud Run',
-    'Artifact Registry',
-    'Pub/Sub',
-    'CloudSQL',
-    'PSQL',
-    'PGVector',
-    'Firestore',
-    'Firebase',
-    'Docker',
-    'FastApi',
-    'Weights and Biases',
-    'VLAs',
-    'VLMs',
-    'Foundation Models',
-    'Gaussian Splatting',
-    'LangChain/LangGraph/LangSmith',
-    'TypeScript',
-    'Vue.js'
+const skillCategories = [
+  {
+    title: 'Languages',
+    skills: ['Python', 'JavaScript/TypeScript', 'C++', 'Shell/Bash']
+  },
+  {
+    title: 'AI & ML',
+    skills: ['PyTorch', 'LangChain/LangGraph', 'VLAs/VLMs', 'Foundation Models', 'Weights & Biases']
+  },
+  {
+    title: 'Cloud & Infrastructure',
+    skills: ['Google Cloud Platform', 'Docker', 'Cloud Run', 'Cloud Build', 'Pub/Sub', 'Artifact Registry']
+  },
+  {
+    title: 'Databases',
+    skills: ['PostgreSQL', 'PGVector', 'Cloud SQL', 'Firestore', 'Firebase']
+  },
+  {
+    title: 'Frameworks & Tools',
+    skills: ['FastAPI', 'Vue.js', 'Edge (Nvidia)', 'Raspberry Pi', 'Gaussian Splatting']
+  }
 ];
 
 // Carousel images
@@ -173,7 +179,7 @@ onMounted(() => {
   }
 
   if (skillsRef.value) {
-    scrollTriggers.push(staggerChildren(skillsRef.value, '.about__skill', { y: 10, stagger: 0.05 }));
+    scrollTriggers.push(staggerChildren(skillsRef.value, '.about__skill-category', { y: 10, stagger: 0.1 }));
   }
 });
 
@@ -207,12 +213,48 @@ onUnmounted(() => {
   line-height: var(--lh-relaxed);
 }
 
-.about__skills {
+.about__skills-categories {
   display: grid;
-  grid-template-columns: repeat(2, minmax(140px, 200px));
-  gap: var(--space-sm) var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .about__skills-categories {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+.about__skill-category {
+  background-color: var(--color-bg-light);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-bg-lighter);
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+
+.about__skill-category:hover {
+  border-color: var(--color-accent-tint);
+}
+
+.about__category-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about__skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
   padding: 0;
-  margin-top: var(--space-md);
+  margin: 0;
   list-style: none;
 }
 
@@ -220,8 +262,9 @@ onUnmounted(() => {
   position: relative;
   padding-left: var(--space-lg);
   font-family: var(--font-mono);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   color: var(--color-text-secondary);
+  line-height: var(--lh-normal);
 }
 
 .about__skill::before {
@@ -376,9 +419,5 @@ onUnmounted(() => {
   transform: scale(1.2);
   border-radius: var(--radius-md);
   transition: background-color var(--dur-3) var(--ease-out);
-}
-
-.about__image-wrapper:hover .about__image-overlay {
-  background-color: transparent;
 }
 </style>

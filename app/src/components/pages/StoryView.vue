@@ -128,9 +128,20 @@
             </p>
             <ul class="story__list">
               <li>
-                <strong>Shellshock Inc (2021):</strong> My first corporate experience, learning 
-                frontend development and professional workflows alongside senior engineers. I 
-                learned that corporate work is a lifestyle, not just a 9-to-5.
+                <strong>Storks Robotics Lab (2025 - Present):</strong> Started as an AI/ML intern 
+                working on autonomous robotic systems for micro-litter collection rovers. My 
+                internship evolved into my first Junior AI Software Engineer role, building 
+                production-grade AI platforms for clients.
+              </li>
+              <li>
+                <strong>Student Football League (2022 - Present):</strong> Founding and scaling the league 
+                taught me that managing a company is ultimately about managing people — 
+                both internally and within the community — while merging technology with my personal passions.
+              </li>
+              <li>
+                <strong>Hospitality Freelancing (2023 - 2026):</strong> Across ~40 venues — hotels, 
+                festivals, fine-dining restaurants — I developed adaptability, work ethic, and 
+                entrepreneurial resilience while supporting my studies.
               </li>
               <li>
                 <strong>Ceilbit (2023):</strong> A web development startup where I worked with 
@@ -138,15 +149,14 @@
                 to build systems with real utility, not just visual appeal.
               </li>
               <li>
-                <strong>Hospitality Freelancing (2023-2026):</strong> Across ~40 venues — hotels, 
-                festivals, fine-dining restaurants — I developed adaptability, work ethic, and 
-                entrepreneurial resilience while supporting my studies.
+                <strong>Shellshock Inc (2021):</strong> My first corporate experience, learning 
+                frontend development and professional workflows alongside senior engineers. I 
+                learned that corporate work is a lifestyle, not just a 9-to-5.
               </li>
               <li>
-                <strong>Storks Robotics Lab (2025-Present):</strong> Started as an AI/ML intern 
-                working on autonomous robotic systems for micro-litter collection rovers. My 
-                internship evolved into my first Junior AI Software Engineer role, building 
-                production-grade AI platforms for clients.
+                <strong>M2ecu (2019-2020):</strong> My first close exposure to running a business — 
+                from financial organization to daily operations. It showed me that entrepreneurship is an 
+                ongoing commitment beyond working hours and gave me early experience managing people.
               </li>
             </ul>
             <p>
