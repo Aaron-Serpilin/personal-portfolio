@@ -7,10 +7,22 @@ export interface Project {
   github?: string;
   external?: string;
   featured?: boolean;
+  inDevelopment?: boolean;
 }
 
 export const projects: Project[] = [
   // Featured Projects
+  {
+    title: 'DeepSummit-v2',
+    description:
+      "A proof of my living love for mountaineering and software. An open-source continuation and improvement of DeepSummit, bringing enhanced architecture and expanded capabilities to predict Himalayan summit success.",
+    tech: ['Python', 'PyTorch', 'Transformers', 'Deep Learning', 'Machine Learning'],
+    year: 2026,
+    image: '/images/projects/deepsummit-v2.png',
+    github: 'https://github.com/Aaron-Serpilin/DeepSummit-v2',
+    featured: true,
+    inDevelopment: true,
+  },
   {
     title: 'Food Transition Platform',
     description:
@@ -20,16 +32,6 @@ export const projects: Project[] = [
     image: '/images/projects/food-transition.png',
     github: 'https://github.com/storks-amsterdam/conversational-agent',
     external: 'https://food-transition.web.app/',
-    featured: true,
-  },
-  {
-    title: 'DeepSummit',
-    description:
-      "Developed a novel dual-transformer deep learning architecture predicting Himalayan summit success using combined personal and meteorological data. Designed custom data fusion mechanisms with 7-day meteorological windowing, implemented intra-sample and inter-sample attention mechanisms, and achieved ~90% prediction accuracy in a complex domain.",
-    tech: ['Python', 'PyTorch', 'Transformers', 'Deep Learning', 'Machine Learning'],
-    year: 2025,
-    image: '/images/projects/deepsummit.png',
-    github: 'https://github.com/Aaron-Serpilin/DeepSummit',
     featured: true,
   },
   {
@@ -45,6 +47,14 @@ export const projects: Project[] = [
   },
 
   // Other Projects
+  {
+    title: 'DeepSummit',
+    description:
+      "Developed a novel dual-transformer deep learning architecture predicting Himalayan summit success using combined personal and meteorological data. Designed custom data fusion mechanisms with 7-day meteorological windowing, implemented intra-sample and inter-sample attention mechanisms, and achieved ~90% prediction accuracy in a complex domain.",
+    tech: ['Python', 'PyTorch', 'Transformers', 'Deep Learning', 'Machine Learning'],
+    year: 2025,
+    github: 'https://github.com/Aaron-Serpilin/DeepSummit',
+  },
   {
     title: 'VLA Finetunes and Datasets',
     description:

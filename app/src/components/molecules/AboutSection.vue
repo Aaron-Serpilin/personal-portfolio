@@ -37,7 +37,7 @@
           identify the need, learn what’s missing, and build something that works.
         </p>
 
-        <p>Here are some of the technologies I work with:</p>
+        <p>Here are some of the skills I work with:</p>
 
         <div class="about__skills-categories" ref="skillsRef">
           <div 
@@ -123,7 +123,7 @@ const skillCategories = [
   },
   {
     title: 'AI & ML',
-    skills: ['PyTorch', 'LangChain/LangGraph', 'VLAs/VLMs', 'Foundation Models', 'Weights & Biases']
+    skills: ['PyTorch', 'LangChain/LangGraph', 'VLAs/VLMs', 'Foundation Models', 'Weights & Biases', 'Experiment Tracking', 'Transfer Learning']
   },
   {
     title: 'Cloud & Infrastructure',
@@ -136,6 +136,10 @@ const skillCategories = [
   {
     title: 'Frameworks & Tools',
     skills: ['FastAPI', 'Vue.js', 'Edge (Nvidia)', 'Raspberry Pi', 'Gaussian Splatting']
+  },
+  {
+    title: 'Community & Operations',
+    skills: ['Community Building', 'Community Operations', 'Event & Program Management', 'Stakeholder Coordination', 'Team Leadership', 'Platform Operations', 'Growth & Engagement Strategy']
   }
 ];
 

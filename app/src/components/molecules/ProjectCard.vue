@@ -25,6 +25,13 @@
     <div class="project-card__content">
       <p class="project-card__overline">
         <AccentText mono>{{ featured ? 'Featured Project' : 'Project' }}</AccentText>
+        <span v-if="project.inDevelopment" class="project-card__dev-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          In Development
+        </span>
       </p>
       
       <h3 class="project-card__title">
@@ -101,6 +108,7 @@ export interface Project {
   image?: string;
   github?: string;
   external?: string;
+  inDevelopment?: boolean;
 }
 
 interface Props {
@@ -284,12 +292,69 @@ onUnmounted(() => {
 .project-card__overline {
   font-size: var(--fs-sm);
   margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .project-card--featured .project-card__overline {
+    justify-content: flex-end;
+  }
+
+  .project-card--featured.project-card--reverse .project-card__overline {
+    justify-content: flex-start;
+  }
+}
+
+.project-card__dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-2xs) var(--space-sm);
+  background-color: rgba(33, 33, 33, 0.95);
+  color: #ffb74d;
+  border: 1px solid #ff9800;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.project-card__dev-badge svg {
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .project-card__title {
   font-size: clamp(var(--fs-xl), 3vw, var(--fs-2xl));
   color: var(--color-text-primary);
   margin-bottom: var(--space-md);
+}
+
+/* Center non-featured project content */
+.project-card:not(.project-card--featured) .project-card__overline {
+  justify-content: center;
+}
+
+.project-card:not(.project-card--featured) .project-card__title {
+  text-align: center;
+}
+
+.project-card:not(.project-card--featured) .project-card__description {
+  text-align: center;
 }
 
 .project-card__title a {
@@ -332,6 +397,11 @@ onUnmounted(() => {
   margin: 0 0 var(--space-lg) 0;
 }
 
+/* Center non-featured project tech tags */
+.project-card:not(.project-card--featured) .project-card__tech {
+  justify-content: center;
+}
+
 @media (max-width: 767px) {
   .project-card__tech {
     gap: var(--space-xs);
@@ -351,6 +421,11 @@ onUnmounted(() => {
 .project-card__links {
   display: flex;
   gap: var(--space-md);
+}
+
+/* Center non-featured project links */
+.project-card:not(.project-card--featured) .project-card__links {
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
