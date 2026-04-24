@@ -1,7 +1,7 @@
 <template>
   <section class="about section" ref="sectionRef">
     <SectionHeading :level="2" numbered :number="1">About Me</SectionHeading>
-    
+
     <div class="about__content">
       <div class="about__text" ref="textRef">
         <p>
@@ -40,16 +40,16 @@
         <p>Here are some of the skills I work with:</p>
 
         <div class="about__skills-categories" ref="skillsRef">
-          <div 
-            v-for="category in skillCategories" 
+          <div
+            v-for="category in skillCategories"
             :key="category.title"
             class="about__skill-category"
           >
             <h4 class="about__category-title">{{ category.title }}</h4>
             <ul class="about__skills">
-              <li 
-                v-for="skill in category.skills" 
-                :key="skill" 
+              <li
+                v-for="skill in category.skills"
+                :key="skill"
                 class="about__skill"
               >
                 {{ skill }}
@@ -62,9 +62,9 @@
       <div class="about__image-wrapper" ref="imageRef">
         <div class="about__carousel">
           <div class="about__image-container">
-            <img 
-              :src="images[currentImageIndex].src" 
-              :alt="images[currentImageIndex].alt" 
+            <img
+              :src="images[currentImageIndex].src"
+              :alt="images[currentImageIndex].alt"
               class="about__image"
               loading="lazy"
             />
@@ -72,7 +72,7 @@
           </div>
 
           <!-- Navigation Buttons -->
-          <button 
+          <button
             v-if="images.length > 1"
             class="about__carousel-btn about__carousel-btn--prev"
             @click="previousImage"
@@ -82,7 +82,7 @@
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
-          <button 
+          <button
             v-if="images.length > 1"
             class="about__carousel-btn about__carousel-btn--next"
             @click="nextImage"
@@ -145,7 +145,7 @@ const skillCategories = [
 
 // Carousel images
 const images = [
-  { src: '/images/personal/profile.jpg', alt: 'Aaron Serpilin' },
+  { src: '/images/personal/profile.png', alt: 'Aaron Serpilin' },
   { src: '/images/personal/hiking.jpg', alt: 'Hiking Antisana 2022' },
   { src: '/images/personal/football.jpg', alt: 'Student Football League match' },
   { src: '/images/personal/Marsik.png', alt: 'Marsik and I, Rucu Pichincha 2022' },
@@ -327,7 +327,7 @@ onUnmounted(() => {
   border-radius: var(--radius-md);
   filter: grayscale(100%) contrast(1);
   mix-blend-mode: multiply;
-  transition: 
+  transition:
     filter var(--dur-3) var(--ease-out),
     opacity var(--dur-3) var(--ease-out);
 }
@@ -366,7 +366,7 @@ onUnmounted(() => {
   color: var(--color-accent);
   cursor: pointer;
   z-index: 2;
-  transition: 
+  transition:
     background-color var(--dur-2) var(--ease-out),
     transform var(--dur-2) var(--ease-out);
   opacity: 0;
@@ -408,7 +408,7 @@ onUnmounted(() => {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: 
+  transition:
     background-color var(--dur-2) var(--ease-out),
     transform var(--dur-2) var(--ease-out);
 }

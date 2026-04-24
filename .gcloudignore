@@ -6,6 +6,7 @@ dist/
 build/
 *.pyc
 node_modules/
+app/
 src/data/*
 !src/data/corpus_charter.md
 !src/data/system_prompt.py
