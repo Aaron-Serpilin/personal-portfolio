@@ -6,14 +6,14 @@
       <!-- Mobile Dropdown Selector -->
       <div class="experience__mobile-selector">
         <label for="job-selector" class="experience__selector-label">Select Company:</label>
-        <select 
+        <select
           id="job-selector"
           v-model="activeIndex"
           class="experience__selector"
           @change="updateIndicator"
         >
-          <option 
-            v-for="(job, index) in jobs" 
+          <option
+            v-for="(job, index) in jobs"
             :key="job.company"
             :value="index"
           >
@@ -51,8 +51,8 @@
             :id="`panel-${activeIndex}`"
             :aria-labelledby="`tab-${activeIndex}`"
           >
-            <div 
-              v-for="(position, posIdx) in activeJob.positions" 
+            <div
+              v-for="(position, posIdx) in activeJob.positions"
               :key="posIdx"
               class="experience__position"
               :class="{ 'experience__position--multiple': activeJob.positions.length > 1 }"
@@ -65,9 +65,9 @@
               </h3>
               <p class="experience__range">{{ position.range }} • {{ position.location }}</p>
               <ul class="experience__list">
-                <li 
-                  v-for="(point, idx) in position.points" 
-                  :key="idx" 
+                <li
+                  v-for="(point, idx) in position.points"
+                  :key="idx"
                   class="experience__point"
                 >
                   {{ point }}
@@ -85,10 +85,10 @@
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import SectionHeading from '../atoms/SectionHeading.vue';
 import AnimatedLink from '../atoms/AnimatedLink.vue';
-import { 
-  revealOnScroll, 
-  animateNavIndicator, 
-  killScrollTriggers, 
+import {
+  revealOnScroll,
+  animateNavIndicator,
+  killScrollTriggers,
   ScrollTrigger
 } from '../../animations/gsap';
 
@@ -106,13 +106,27 @@ interface Job {
 }
 
 const jobs: Job[] = [
+    {
+    company: 'TomTom',
+    url: 'https://www.tomtom.com/',
+    positions: [
+      {
+        title: 'AI Software Engineer',
+        range: 'May 2026 - Present',
+        location: 'Amsterdam, Netherlands',
+        points: [
+          'Joined the LSI/AI/Data Unit focused on Navigational Intelligence.'
+        ]
+      }
+    ]
+  },
   {
     company: 'Storks Robotics Lab',
     url: 'https://www.linkedin.com/company/storks-ai/posts/?feedView=all',
     positions: [
       {
         title: 'Junior AI Software Engineer',
-        range: 'December 2025 - Present',
+        range: 'December 2025 - March 2026',
         location: 'Amsterdam, Netherlands',
         points: [
           'Architected and deployed a production RAG platform for niche research groups, processing thousands of documents through automated Pub/Sub pipelines with Google Search Engine API integration',
@@ -337,7 +351,7 @@ onUnmounted(() => {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   cursor: pointer;
-  transition: 
+  transition:
     border-color var(--dur-2) var(--ease-out),
     background-color var(--dur-2) var(--ease-out);
 }
@@ -376,7 +390,7 @@ onUnmounted(() => {
   color: var(--color-text-secondary);
   white-space: nowrap;
   cursor: pointer;
-  transition: 
+  transition:
     color var(--dur-2) var(--ease-out),
     background-color var(--dur-2) var(--ease-out);
 }
